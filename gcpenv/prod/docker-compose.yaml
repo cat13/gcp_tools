@@ -1,0 +1,12 @@
+services:
+  db:
+    container_name: vivi_prod_db_proxy
+    image: vivi-db-proxy:0.0.1
+    restart: always
+    volumes:
+      - /home/scao/dockerenv/vivi/prod/config:/root/.config
+      - /home/scao/dockerenv/vivi/prod/kube:/root/.kube
+    environment:
+      - DB_INSTANCE=vivihealth-prod:us-central1:us-central1-db
+    ports:
+      - 5438:5432

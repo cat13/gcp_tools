@@ -1,0 +1,12 @@
+services:
+  db:
+    container_name: vivi_staging_db_proxy
+    image: vivi-db-proxy:0.0.1
+    restart: always
+    volumes:
+      - /home/scao/dockerenv/vivi/stage/config:/root/.config
+      - /home/scao/dockerenv/vivi/stage/kube:/root/.kube
+    environment:
+      - DB_INSTANCE=vivihealth-staging:us-central1:vivihealth-staging-db
+    ports:
+      - 5439:5432
